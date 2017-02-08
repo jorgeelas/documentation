@@ -276,13 +276,13 @@ Under Events > configure, click **configure**. Copy, paste the following code an
 
 	# In configuration Script there is available ip, and variables of the bindings we will show them for this sample.
 
-	echo $mysql_service.address.public
+	echo {{ mysql_service.address.public }}
 
-	echo $mysql_service.port
+	echo {{ mysql_service.port }}
 
-	echo $mysql_service.username
+	echo {{ mysql_service.username }}
 
-	echo $mysql_service.password
+	echo {{ mysql_service.password }}
 
 	cp Easy-PHP-MySQL/index.php /var/www/html
 
@@ -298,7 +298,7 @@ Under Events > start, click **start**. Copy, paste the following code and save. 
 
 	# In start script the bindings are ready for use
 
-	curl -ks $SQL_SCRIPT | mysql --host=$mysql_service.address.public  --port=$mysql_service.port --user=$mysql_service.username --password=$mysql_service.password
+	curl -ks {{ SQL_SCRIPT }} | mysql --host={{ mysql_service.address.public }}  --port={{ mysql_service.port }} --user={{ mysql_service.username }} --password={{ mysql_service.password }}
     </pre>
 
 Yay! You just defined a simple LAMP stack application and connected its tiers with a binding.
